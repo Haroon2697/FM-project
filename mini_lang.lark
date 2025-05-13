@@ -6,13 +6,17 @@
           | for_loop
           | assert_stmt
           | block
+          | array_operation
 
-assignment: VAR ":=" expr ";"
-assert_stmt: "assert" "(" condition ")" ";"
+assignment: VAR "=" expr ";"
+assert_stmt: "verify" "(" condition ")" ";"
 
-if_statement: "if" "(" condition ")" block ["else" block]
-while_loop: "while" "(" condition ")" block
-for_loop: "for" "(" assignment condition ";" assignment ")" block
+if_statement: "when" "(" condition ")" block ["otherwise" block]
+while_loop: "repeat" "(" condition ")" block
+for_loop: "iterate" "(" assignment condition ";" assignment ")" block
+
+array_operation: VAR "[" expr "]" "=" expr ";"
+               | VAR "=" VAR "[" expr "]"
 
 block: "{" statement+ "}"
 
