@@ -78,7 +78,7 @@ class SMTGenerator:
                         # Handle phi nodes
                         args = rhs[4:-1].split(',')
                         args = [arg.strip() for arg in args]
-                        # For now, just use the first non-None argument
+                        # For now, just used the first non-None argument
                         for arg in args:
                             if arg != 'None':
                                 self.solver.add(self.get_var(var) == self.get_var(arg))
