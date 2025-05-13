@@ -2,14 +2,67 @@
 
 A formal methods tool that checks program equivalence using SSA form and SMT solving.
 
-## Overview
+## Setup Instructions
 
-This project implements a program equivalence checker using formal methods techniques. It consists of several components:
+1. Install required Python packages:
+```bash
+pip install lark-parser z3-solver
+```
 
-1. **Parser (`parser.py`)**: Parses a simple programming language with assignments, if statements, and assertions
-2. **SSA Converter (`ssa_converter.py`)**: Converts the parsed program into Static Single Assignment (SSA) form
-3. **SMT Generator (`smt_generator.py`)**: Generates SMT constraints from SSA form using Z3 solver
-4. **Equivalence Checker**: Verifies if two programs are functionally equivalent
+2. Run the program:
+```bash
+python gui.py
+```
+
+## Project Structure
+
+- `gui.py`: Main GUI interface
+- `parser.py`: Program parser and AST transformer
+- `ssa_converter.py`: SSA form converter
+- `smt_generator.py`: SMT constraint generator
+- `loop_unroller.py`: Loop unrolling implementation
+- `mini_lang.lark`: Language grammar definition
+
+## Usage
+
+1. Program Analysis:
+   - Enter program in the input area
+   - Click "Parse & Analyze" to see SSA form and SMT constraints
+
+2. Equivalence Check:
+   - Enter two programs
+   - Click "Check Equivalence" to verify if they are equivalent
+
+## Language Syntax
+
+```python
+# Variable Assignment
+x = 10;
+y = x + 5;
+
+# Conditional Statements
+when (x > y) {
+    z = x + y;
+} otherwise {
+    z = x - y;
+}
+
+# Loops
+repeat (x > 0) {
+    x = x - 1;
+}
+
+iterate (i = 0; i < 10; i = i + 1) {
+    sum = sum + i;
+}
+
+# Array Operations
+arr[0] = 10;
+x = arr[1];
+
+# Assertions
+verify(x > 0);
+```
 
 ## Features
 
